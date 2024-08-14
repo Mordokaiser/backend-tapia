@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->enum('model',['Redmi_Note_10','Redmi_Note_10_Pro','Redmi_Note_10_Pro_Max','Redmi_Note_10_5G'])->nullable();
+            $table->enum('model',['Redmi_Note_10','Redmi_Note10_Pro','Redmi_Note_10_Pro_Max','Redmi_Note_10_5G'])->nullable();
             $table->enum('color',['gray','white','green','gold'])->nullable();
             $table->integer('price')->nullable();
             $table->integer('stock')->nullable();
