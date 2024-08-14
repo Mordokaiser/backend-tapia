@@ -27,21 +27,33 @@ class PhonesController extends Controller
      */
     public function show()
     {
-        //
+        //obtenemos todos los registros de telefonos
+        $phones = phones::all();
+        //retornamos los registros de telefonos
+        return response()->json(['message'=>'Se enviaron todos los celulares','phones'=>$phones], 200);
     }
 
     /**
      * edit actualizara el recurso especificado en el almacenamiento.
      */
-    public function edit(phones $phones)
+    public function edit(Request $request)
     {
-        //
+        //obtenemos el telefono que queremos editar
+        $phone = phones::find($request->id);
+        //actualizamos los datos del telefono
+        $phone->update($request->all());
+        //retornamos el telefono actualizado
+        return response()->json(['message'=>'datos actualizados', 'phones'=>$request], 200);
     }
     /**
      * destroy eliminar el recurso especificado del almacenamiento.
      */
-    public function destroy(phones $phones)
-    {
-        //
+    public function destroy(Request $request)
+    {   //obtenemos el telefono q vamos a eliminar
+        $phones = phones::find($request->id);
+        //eliminamos el telefono
+        $phones->delete();
+        //retornamos un mensaje
+        return response()->json(['message'=>'Se a eliminado un telefono'], 200);
     }
 }
